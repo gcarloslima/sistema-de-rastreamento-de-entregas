@@ -23,7 +23,6 @@ Content-Type: application/json
 GET /pacotes/2
 Host: localhost:8080
 
-
 ###
 PUT /pacotes/2
 Host: localhost:8080
@@ -56,6 +55,10 @@ Host: localhost:8080
 
 # Endereco
 #--------------------------------------------------------
+###
+GET /enderecos/11
+Host: localhost:8080
+
 ###
 GET /enderecos/11
 Host: localhost:8080
