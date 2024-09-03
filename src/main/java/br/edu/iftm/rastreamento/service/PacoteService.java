@@ -29,7 +29,7 @@ public class PacoteService {
         Iterable<Pacote> pacotesIterable = pacoteRepository.findAll();
         List<Pacote> pacotesList = new ArrayList<>();
         pacotesIterable.forEach(pacotesList::add);
-        return pacotesList.stream().map((pacote) -> converters.convertToDTO(pacote)).collect(Collectors.toList());
+        return pacotesList.stream().map((pacote) -> converters.convertToDTO(pacote)).toList();
     }
 
     public PacoteDTO getPacoteById(Long id) {
@@ -50,6 +50,16 @@ public class PacoteService {
         pacote.setId(id);
         Pacote updatedPacote = pacoteRepository.save(pacote);
         return converters.convertToDTO(updatedPacote);
+    }
+
+    public List<PacoteDTO> getPacotesByStatus(String status) {
+        List<Pacote> pacotes = pacoteRepository.findAllByStatus(status);
+            return pacotes.stream().map((pacote) -> converters.convertToDTO(pacote)).toList();
+    }
+
+    public List<PacoteDTO> getPacotesByDestinatario(String destinatario) {
+        List<Pacote> pacotes = pacoteRepository.findAllByDestinatario(destinatario);
+        return pacotes.stream().map((pacote) -> converters.convertToDTO(pacote)).toList();
     }
 
 }

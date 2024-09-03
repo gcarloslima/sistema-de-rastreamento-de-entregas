@@ -42,4 +42,15 @@ public class PacoteController {
 		PacoteDTO updatedPacote = pacoteService.updatePacote(id, pacoteDTO);
 		return updatedPacote;
 	}
+
+	@GetMapping("/status/{status}")
+	public List<PacoteDTO> getPacotesByStatus(@PathVariable String status) {
+		return pacoteService.getPacotesByStatus(status);
+	}
+
+	@GetMapping("/destinatario/{destinatario}")
+	public List<PacoteDTO> getPacotesByDestinatario(@PathVariable String destinatario) {
+		return pacoteService.getPacotesByDestinatario(destinatario);
+	}
+
 }
